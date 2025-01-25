@@ -1,120 +1,127 @@
 # 🚀 Linux Privilege Escalation Scanner
-Linux Privilege Escalation Scanner, Linux sistemlerindeki yetki yükseltme güvenlik açıklarını tespit etmek için tasarlanmış güçlü bir araçtır. SUID dosyalar, dosya yetenekleri (capabilities) ve yanlış yapılandırmalar gibi güvenlik risklerini otomatik olarak tarar ve raporlar.
+**Linux Privilege Escalation Scanner**, Linux sistemlerindeki yetki yükseltme güvenlik açıklarını tespit etmek için tasarlanmış güçlü bir araçtır. SUID dosyalar, dosya yetenekleri (capabilities) ve yanlış yapılandırmalar gibi güvenlik risklerini otomatik olarak tarar ve raporlar.  
 
-🌟 Özellikler
-🔍 SUID Binaries: SUID bit ayarlı dosyaları tespit eder.
-🔒 Capabilities: Dosyaların sahip olduğu yetenekleri analiz eder.
-⚙️ Misconfigurations: SSH yapılandırma hataları, sudoers izin sorunları gibi yanlış yapılandırmaları tespit eder.
-🛠️ Kullanım
+## 🌟 Özellikler
+***🔍 SUID Binaries:*** SUID bit ayarlı dosyaları tespit eder.  
+
+***🔒 Capabilities:*** Dosyaların sahip olduğu yetenekleri analiz eder.  
+
+***⚙️ Misconfigurations:*** SSH yapılandırma hataları, sudoers izin sorunları gibi yanlış yapılandırmaları tespit eder.
+
+## 🛠️ Kullanım
 Bu araç, komut satırından kolayca çalıştırılabilir ve esnek parametrelerle konfigüre edilebilir.
 
-🎯 Parametreler
-Parametre	Açıklama
---suid	SUID bit ayarlı dosyaları tarar.
---capabilities	Dosyaların yeteneklerini kontrol eder.
---misconfig	Yanlış yapılandırmaları tespit eder.
-📤 Çıktı Formatı
+## 🎯 Parametreler  
+
+
+--suid	SUID bit ayarlı dosyaları tarar.  
+
+--capabilities	Dosyaların yeteneklerini kontrol eder.  
+
+--misconfig	Yanlış yapılandırmaları tespit eder.  
+
+## 📤 Çıktı Formatı
 Araç, sonuçlarını JSON formatında döndürür:
 
-json
-Kopyala
-Düzenle
-{
-    "sonuç": {
-        "durum": "başarılı/başarısız",
-        "veri": {},
+
+    {
+    "sonuç": {  
+
+        "durum": "başarılı/başarısız",  
+
+        "veri": {},  
+
         "hata_mesajı": "varsa hata açıklaması"
-    }
-}
-⚙️ Kurulum
-1️⃣ Gereksinimler
-Python 3.x
-Aşağıdaki kütüphaneler:
-rich
-psutil
-2️⃣ Bağımlılıkları Yükleme
+    }  
+
+## ⚙️ Kurulum
+### 1️⃣ Gereksinimler
+- Python 3.x  
+
+- Aşağıdaki kütüphaneler:  
+
+        rich  
+
+        psutil  
+  
+
+
+### 2️⃣ Bağımlılıkları Yükleme
 Gerekli bağımlılıkları yüklemek için:
 
-bash
-Kopyala
-Düzenle
-pip install -r requirements.txt
-Eğer externally-managed-environment hatası alırsanız, sanal ortam kullanabilirsiniz:
-
-bash
-Kopyala
-Düzenle
-python3 -m venv myenv
-source myenv/bin/activate
-pip install -r requirements.txt
+    
+    pip install -r requirements.txt
+    Eğer "externally-managed-environment" hatası alırsanız, sanal ortam kullanabilirsiniz:
+    
+    python3 -m venv myenv
+    source myenv/bin/activate
+    pip install -r requirements.txt  
+    
 Sanal ortamdan çıkmak için:
 
-bash
-Kopyala
-Düzenle
-deactivate
-3️⃣ Sistem Genelinde Kurulum (Opsiyonel)
+    deactivate  
+
+### 3️⃣ Sistem Genelinde Kurulum (Opsiyonel)
 Sistem genelinde bağımlılıkları yüklemek için:
 
-bash
-Kopyala
-Düzenle
-sudo apt install python3-rich python3-psutil
-▶️ Çalıştırma
+    sudo apt install python3-rich python3-psutil  
+
+### ▶️ Çalıştırma
 Aşağıdaki komutlarla aracı çalıştırabilirsiniz:
 
-SUID Taraması:
+***SUID Taraması:***
 
-bash
-python3 main.py --suid
-Capabilities Kontrolü:
 
-bash
-python3 main.py --capabilities
-Yanlış Yapılandırma Analizi:
+    python3 main.py --suid  
 
-bash
-python3 main.py --misconfig
-Parametresiz çalıştırıldığında yardım mesajı görüntülenir.
+***Capabilities Kontrolü:***
 
-📊 Çıktı Örnekleri
---suid Parametresi ile Çıktı:
-json
-{
-    "sonuç": {
-        "durum": "başarılı",
-        "veri": {
-            "suid": {
-                "suid_files": [
-                    "/usr/lib/chromium/chrome-sandbox",
-                    "/usr/bin/sudo"
-                ]
-            }
-        },
-        "hata_mesajı": ""
+    python3 main.py --capabilities  
+
+***Yanlış Yapılandırma Analizi:***
+
+    python3 main.py --misconfig  
+
+Parametresiz çalıştırıldığında yardım mesajı görüntülenir.  
+
+## 📊 Çıktı Örnekleri
+### --suid Parametresi ile Çıktı:
+
+    {
+        "sonuç": {
+            "durum": "başarılı",
+            "veri": {
+                "suid": {
+                    "suid_files": [
+                        "/usr/lib/chromium/chrome-sandbox",
+                        "/usr/bin/sudo"
+                    ]
+                }
+            },
+            "hata_mesajı": ""
     }
-}
---misconfig Parametresi ile Çıktı:
-json
-Kopyala
-Düzenle
-{
-    "sonuç": {
-        "durum": "başarılı",
-        "veri": {
-            "misconfig": {
-                "misconfigurations": []
-            }
-        },
-        "hata_mesajı": ""
+
+### --misconfig Parametresi ile Çıktı:  
+
+    {
+        "sonuç": {
+            "durum": "başarılı",
+            "veri": {
+                "misconfig": {
+                    "misconfigurations": []
+                }
+            },
+            "hata_mesajı": ""
+        }
     }
-}
-🤝 Katkıda Bulunma
+### 🤝 Katkıda Bulunma
 Bu projeye katkıda bulunmak ister misiniz? İşte adımlar:
 
-Bu depoyu fork edin.
-Yeni bir dal (branch) oluşturun.
-Değişikliklerinizi commit edin.
+Bu depoyu fork edin.  
+
+Yeni bir dal (branch) oluşturun.  
+
+Değişikliklerinizi commit edin.  
+
 Pull Request göndererek katkıda bulunun.
-📧 İletişim
-Herhangi bir sorunuz veya öneriniz varsa, lütfen bizimle iletişime geçin!
+
