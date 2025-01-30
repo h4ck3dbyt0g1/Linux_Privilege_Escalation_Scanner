@@ -117,10 +117,8 @@ Parametresiz çalıştırıldığında yardım mesajı görüntülenir.
 
 ### Proje Videosu
 
-<video width="600" controls>
-  <source src="C:\Users\tolga\Videos\2025-01-27 00-04-54.mp4" type="video/mp4">
-  Tarayıcınız video etiketini desteklemiyor.
-</video>
+[Demo Videosunu İzle](https://github.com/h4ck3dbyt0g1/Linux_Privilege_Escalation_Scanner/releases/tag/release-01)
+
 
     
 ### 🤝 Katkıda Bulunma
