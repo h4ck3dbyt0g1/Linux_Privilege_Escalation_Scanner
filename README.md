@@ -114,6 +114,15 @@ Parametresiz çalıştırıldığında yardım mesajı görüntülenir.
             "hata_mesajı": ""
         }
     }
+
+### Proje Videosu
+
+<video width="600" controls>
+  <source src="C:\Users\tolga\Videos\2025-01-27 00-04-54.mp4" type="video/mp4">
+  Tarayıcınız video etiketini desteklemiyor.
+</video>
+
+    
 ### 🤝 Katkıda Bulunma
 Bu projeye katkıda bulunmak ister misiniz? İşte adımlar:
 
